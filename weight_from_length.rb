@@ -22,7 +22,8 @@ def filament_volume(length, diameter, filament_type)
   filament_length = (length.to_f * 1000.0) # m to mm
   radius = diameter / 2
   volume = (Math::PI * radius ** 2 * filament_length) / 1000.0 # cubic mm to grams
-  volume * volume_conversions_by_type[filament_type]
+  final_volume = volume * volume_conversions_by_type[filament_type]
+  "VOLUME: #{final_volume.round(2)}g"
 end
 
 p filament_volume(input_length, input_diameter, filament_type)
